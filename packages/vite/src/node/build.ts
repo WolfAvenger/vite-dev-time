@@ -674,7 +674,7 @@ export async function build(
           }
         } else if (event.code === 'BUNDLE_END') {
           event.result.close()
-          config.logger.info(colors.cyan(`built in ${event.duration}ms.`))
+          config.logger.info(`${event.duration}`)
         } else if (event.code === 'ERROR') {
           outputBuildError(event.error)
         }

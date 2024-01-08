@@ -168,31 +168,18 @@ cli
         throw new Error('HTTP server not available')
       }
 
+      const viteStartTime = global.__vite_start_time ?? false
       await server.listen()
 
       const info = server.config.logger.info
 
-      const viteStartTime = global.__vite_start_time ?? false
       const startupDurationString = viteStartTime
-        ? colors.dim(
-            `ready in ${colors.reset(
-              colors.bold(Math.ceil(performance.now() - viteStartTime)),
-            )} ms`,
-          )
+        ? Math.ceil(performance.now() - viteStartTime)
         : ''
-      const hasExistingLogs =
-        process.stdout.bytesWritten > 0 || process.stderr.bytesWritten > 0
 
-      info(
-        `\n  ${colors.green(
-          `${colors.bold('VITE')} v${VERSION}`,
-        )}  ${startupDurationString}\n`,
-        {
-          clear: !hasExistingLogs,
-        },
-      )
+      info(`${startupDurationString}`)
 
-      server.printUrls()
+      // server.printUrls()
       const customShortcuts: CLIShortcut<typeof server>[] = []
       if (profileSession) {
         customShortcuts.push({
@@ -219,7 +206,9 @@ cli
           },
         })
       }
-      server.bindCLIShortcuts({ print: true, customShortcuts })
+      // server.bindCLIShortcuts({ print: true, customShortcuts });
+
+      server.close()
     } catch (e) {
       const logger = createLogger(options.logLevel)
       logger.error(colors.red(`error when starting dev server:\n${e.stack}`), {
