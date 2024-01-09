@@ -1,14 +1,14 @@
 {
-  "name": "@vitejs/vite-monorepo",
-  "private": true,
+  "name": "vite-time-loader",
   "type": "module",
+  "version": "0.0.1",
   "engines": {
     "node": "^18.0.0 || >=20.0.0"
   },
   "homepage": "https://vitejs.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitejs/vite.git"
+    "url": "git+https://github.com/WolfAvenger/vite-dev-time.git"
   },
   "keywords": [
     "frontend",
