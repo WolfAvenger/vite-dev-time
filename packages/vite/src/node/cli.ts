@@ -137,7 +137,7 @@ cli
 cli
   .command('[root]', 'start dev server') // default command
   .alias('serve') // the command is called 'serve' in Vite's API
-  .alias('dev') // alias to align with the script name
+  .alias('dev-time') // alias to align with the script name
   .option('--host [host]', `[string] specify hostname`, { type: [convertHost] })
   .option('--port <port>', `[number] specify port`)
   .option('--open [path]', `[boolean | string] open browser on startup`)
